@@ -11,6 +11,7 @@ pnpm install
 Two options: Docker (recommended) or using node
 
 ### Docker
+
 ```bash
 ./build.sh
 ```
@@ -20,6 +21,7 @@ Two options: Docker (recommended) or using node
 ```
 
 ### NodeJS
+
 ```bash
 pnpm start
 ```
