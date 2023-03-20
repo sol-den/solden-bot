@@ -8,7 +8,9 @@
   "scripts": {
     "prepare": "pnpm husky install",
     "build": "tsc",
-    "start": "pnpm build && node dist/index.js"
+    "start": "pnpm build && node dist/index.js",
+    "format": "prettier --write src/**/*.ts",
+    "lint": "eslint \"src/**/*.ts\" --fix"
   },
   "version": "2.0.0",
   "dependencies": {
@@ -20,6 +22,10 @@
   "devDependencies": {
     "@types/cron": "^2.0.0",
     "@types/node": "^18.15.3",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.4",
@@ -27,7 +33,8 @@
   },
   "lint-staged": {
     "*.{js,ts}": [
-      "pnpm prettier --write ."
+      "pnpm format",
+      "pnpm lint"
     ]
   }
 }

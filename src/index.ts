@@ -7,6 +7,7 @@ import { resetFightCooldownsJob } from "./jobs/resetFightCooldowns";
 import { resetLeaderboardJob } from "./jobs/resetLeaderboard";
 import { resetMaxesJob } from "./jobs/resetMaxes";
 import { resetUpgradeCooldownsJob } from "./jobs/resetUpgradeCooldowns";
+import { testJob } from "./jobs/testJob";
 
 require("dotenv").config();
 
@@ -50,6 +51,7 @@ bot.on("ready", () => {
 });
 
 bot.on("error", async (error) => {
+  console.error(error);
   const logChannel = await bot.channels.fetch(BOT_LOG_CHANNEL);
   if (!logChannel) {
     console.log("Could not locate log channel!");
@@ -64,6 +66,7 @@ aggregateLeaderboardJob.start();
 resetFightCooldownsJob.start();
 resetLeaderboardJob.start();
 resetUpgradeCooldownsJob.start();
+// testJob.start();
 
 console.log("Current time: ", new Date().toString());
 console.log("Reprocess job run time: ", reprocessJob.nextDates().toString());
@@ -72,6 +75,7 @@ console.log("Aggregate leaderboard job run time: ", aggregateLeaderboardJob.next
 console.log("Reset fight cooldowns job run time: ", resetFightCooldownsJob.nextDates().toString());
 console.log("Reset leaderboard job run time: ", resetLeaderboardJob.nextDates().toString());
 console.log("Reset upgrade cooldowns job run time: ", resetUpgradeCooldownsJob.nextDates().toString());
+// console.log("Test job run time: ", testJob.nextDates().toString());
 //#endregion
 
 bot.login(DISCORD_TOKEN);

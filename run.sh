@@ -1,1 +1,1 @@
-docker run solden-bot
+docker compose up
