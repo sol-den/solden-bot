@@ -1,13 +1,13 @@
 import { CronJob } from "cron";
 import { API_URL, API_ACCESS_KEY } from "..";
-import { EVERY_DAY_AT_MIDNIGHT, JOB_TIME_ZONE } from "../constants";
+import { EVERY_TWO_MINUTES, JOB_TIME_ZONE } from "../constants";
 import cfetch from "cross-fetch";
 
-export const resetMaxesJob = new CronJob(
-  EVERY_DAY_AT_MIDNIGHT,
+export const aggregateLeaderboardJob = new CronJob(
+  EVERY_TWO_MINUTES,
   async () => {
     try {
-      const resetMaxReq = await cfetch(`${API_URL}/resetmax`, {
+      const aggregateReq = await cfetch(`${API_URL}/aggregateleaderboard`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -16,11 +16,10 @@ export const resetMaxesJob = new CronJob(
           key: API_ACCESS_KEY,
         }),
       });
-
-      if (!resetMaxReq.ok) {
-        throw "Error sending resetMax request";
+      if (!aggregateReq.ok) {
+        throw "Error sending aggregateLeaderboard request";
       }
-      console.log("Reset maxes");
+      console.log("Aggregated leaderboard");
     } catch (e) {
       console.error(e);
     }
