@@ -1,7 +1,8 @@
 import { CronJob } from "cron";
-import { API_URL, API_ACCESS_KEY } from "..";
-import { EVERY_TWO_MINUTES, JOB_TIME_ZONE } from "../constants";
 import cfetch from "cross-fetch";
+
+import { API_ACCESS_KEY, API_URL } from "..";
+import { EVERY_TWO_MINUTES, JOB_TIME_ZONE } from "../constants";
 
 export const aggregateLeaderboardJob = new CronJob(
   EVERY_TWO_MINUTES,

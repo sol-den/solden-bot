@@ -1,8 +1,9 @@
 import { CronJob } from "cron";
-import { ADMIN_ROLE, EVERY_SATURDAY_AT_MIDNIGHT, JOB_TIME_ZONE, MOD_ROLE } from "../constants";
 import cfetch from "cross-fetch";
-import { API_ACCESS_KEY, API_URL, TOP_10_CHANNEL } from "..";
 import { APIEmbedField, EmbedBuilder, RestOrArray } from "discord.js";
+
+import { API_ACCESS_KEY, API_URL, TOP_10_CHANNEL } from "..";
+import { ADMIN_ROLE, EVERY_SATURDAY_AT_MIDNIGHT, JOB_TIME_ZONE, MOD_ROLE } from "../constants";
 import { getTextChannel } from "../utils/utils";
 
 export const resetLeaderboardJob = new CronJob(

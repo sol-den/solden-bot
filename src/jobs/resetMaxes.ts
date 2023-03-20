@@ -1,7 +1,8 @@
 import { CronJob } from "cron";
-import { API_URL, API_ACCESS_KEY } from "..";
-import { EVERY_DAY_AT_MIDNIGHT, JOB_TIME_ZONE } from "../constants";
 import cfetch from "cross-fetch";
+
+import { API_ACCESS_KEY, API_URL } from "..";
+import { EVERY_DAY_AT_MIDNIGHT, JOB_TIME_ZONE } from "../constants";
 
 export const resetMaxesJob = new CronJob(
   EVERY_DAY_AT_MIDNIGHT,

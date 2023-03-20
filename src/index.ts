@@ -1,4 +1,5 @@
 import { Client, Events, GatewayIntentBits, REST, Routes } from "discord.js";
+
 import { commands } from "./commands/commandList";
 import { BOT_LOG_CHANNEL } from "./constants";
 import { aggregateLeaderboardJob } from "./jobs/aggregateLeaderboard.ts";
@@ -7,7 +8,6 @@ import { resetFightCooldownsJob } from "./jobs/resetFightCooldowns";
 import { resetLeaderboardJob } from "./jobs/resetLeaderboard";
 import { resetMaxesJob } from "./jobs/resetMaxes";
 import { resetUpgradeCooldownsJob } from "./jobs/resetUpgradeCooldowns";
-import { testJob } from "./jobs/testJob";
 
 require("dotenv").config();
 
