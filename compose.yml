@@ -1,0 +1,3 @@
+services:
+  solden-bot:
+    image: solden-bot

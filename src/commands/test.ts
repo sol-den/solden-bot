@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from "discord.js";
+
 import { Command } from "../types";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

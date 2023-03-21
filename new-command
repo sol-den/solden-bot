@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+cp src/commands/templateCommand.ts src/commands/$1.ts
