@@ -1,6 +1,9 @@
 // Channels
 export const BOT_LOG_CHANNEL = "982060324603695104";
 
+// Users
+export const QUELLEN_ID = "416430897894522890";
+
 // Roles
 export const ADMIN_ROLE = "939768882263117824";
 export const MOD_ROLE = "939770454456037386";

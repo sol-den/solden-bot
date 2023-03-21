@@ -2,6 +2,7 @@ import fetch from "cross-fetch";
 import { SlashCommandBuilder } from "discord.js";
 
 import { API_ACCESS_KEY, API_URL } from "..";
+import { QUELLEN_ID } from "../constants";
 import { Command } from "../types";
 
 export const snapshotLeaderboardCommand: Command = {
@@ -9,7 +10,7 @@ export const snapshotLeaderboardCommand: Command = {
   async execute(interaction) {
     try {
       const author = interaction.user.id;
-      if (author !== "416430897894522890") {
+      if (author !== QUELLEN_ID) {
         await interaction.reply({
           content: "You do not have permission to do this!",
           ephemeral: true,
