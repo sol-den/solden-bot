@@ -2,14 +2,14 @@ import { CronJob } from "cron";
 import cfetch from "cross-fetch";
 
 import { API_ACCESS_KEY, API_URL } from "..";
-import { EVERY_DAY_AT_MIDNIGHT, JOB_TIME_ZONE } from "../constants";
+import { EVERY_TWO_MINUTES, JOB_TIME_ZONE } from "../constants";
 import { handleError } from "../utils/utils";
 
-export const reprocessJob = new CronJob(
-  EVERY_DAY_AT_MIDNIGHT,
+export const resetFightCooldownsJob = new CronJob(
+  EVERY_TWO_MINUTES,
   async () => {
     try {
-      const reprocessReq = await cfetch(`${API_URL}/reprocessfailed`, {
+      const templateReq = await cfetch(`${API_URL}/clearfightcooldowns`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -18,11 +18,10 @@ export const reprocessJob = new CronJob(
           key: API_ACCESS_KEY,
         }),
       });
-
-      if (!reprocessReq.ok) {
-        throw "Error sending reprocess request";
+      if (!templateReq.ok) {
+        throw "Error sending clearfightcooldowns request";
       }
-      console.log("Reprocessing failed upgrade transactions");
+      console.log("Cleared fight cooldowns");
     } catch (e) {
       console.error(e);
       handleError(e);

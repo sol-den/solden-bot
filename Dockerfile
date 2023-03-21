@@ -4,4 +4,4 @@ COPY . .
 RUN npm i -g pnpm
 RUN pnpm i
 RUN pnpm build
-CMD ["pnpm", "start"]
+CMD ["node", "dist/index.js"]
