@@ -10,7 +10,9 @@
     "build": "tsc",
     "start": "pnpm build && node dist/index.js",
     "format": "prettier --write src/**/*.ts",
-    "lint": "eslint \"src/**/*.ts\" --fix"
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "lint-check": "eslint \"src/**/*.ts\"",
+    "type-check": "tsc --noEmit"
   },
   "version": "2.0.0",
   "dependencies": {
