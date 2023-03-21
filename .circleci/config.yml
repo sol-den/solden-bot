@@ -1,17 +1,19 @@
+version: 2.1
+
 jobs:
   code-checks:
     docker: 
-      image: cimg/node:18.15.0
+      - image: cimg/node:18.15.0
     steps:
       - checkout
       - run:
-          name: Install Dependencies
+          name: "Install Dependencies"
           command: pnpm i
       - run:
-          name: Run type checks
+          name: "Run type checks"
           commnad: pnpm type-check
       - run:
-          name: Run lint checks
+          name: "Run lint checks"
           command: pnpm lint-check
 
 workflows:
