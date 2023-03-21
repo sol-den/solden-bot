@@ -11,8 +11,6 @@ import { resetUpgradeCooldownsJob } from "./jobs/resetUpgradeCooldowns";
 
 require("dotenv").config();
 
-let c: string = 3;
-
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN!;
 const SOLDEN_GUILD = process.env.SOLDEN_GUILD!;
 const CLIENT_ID = process.env.CLIENT_ID!;
