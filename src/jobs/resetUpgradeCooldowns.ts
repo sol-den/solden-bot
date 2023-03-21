@@ -3,6 +3,7 @@ import cfetch from "cross-fetch";
 
 import { API_ACCESS_KEY, API_URL } from "..";
 import { EVERY_SATURDAY_AT_MIDNIGHT, JOB_TIME_ZONE } from "../constants";
+import { handleError } from "../utils/utils";
 
 export const resetUpgradeCooldownsJob = new CronJob(
   EVERY_SATURDAY_AT_MIDNIGHT,
@@ -24,6 +25,7 @@ export const resetUpgradeCooldownsJob = new CronJob(
       console.log("Reset upgrade cooldowns");
     } catch (e) {
       console.error(e);
+      handleError(e);
     }
   },
   null,

@@ -4,7 +4,7 @@ import { APIEmbedField, EmbedBuilder, RestOrArray } from "discord.js";
 
 import { API_ACCESS_KEY, API_URL, TOP_10_CHANNEL } from "..";
 import { ADMIN_ROLE, EVERY_SATURDAY_AT_MIDNIGHT, JOB_TIME_ZONE, MOD_ROLE } from "../constants";
-import { getTextChannel } from "../utils/utils";
+import { getTextChannel, handleError } from "../utils/utils";
 
 export const resetLeaderboardJob = new CronJob(
   EVERY_SATURDAY_AT_MIDNIGHT,
@@ -53,6 +53,7 @@ export const resetLeaderboardJob = new CronJob(
       }
     } catch (e) {
       console.error(e);
+      handleError(e);
     }
   },
   null,

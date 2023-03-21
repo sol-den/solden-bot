@@ -3,6 +3,7 @@ import cfetch from "cross-fetch";
 
 import { API_ACCESS_KEY, API_URL } from "..";
 import { EVERY_TWO_MINUTES, JOB_TIME_ZONE } from "../constants";
+import { handleError } from "../utils/utils";
 
 export const aggregateLeaderboardJob = new CronJob(
   EVERY_TWO_MINUTES,
@@ -23,6 +24,7 @@ export const aggregateLeaderboardJob = new CronJob(
       console.log("Aggregated leaderboard");
     } catch (e) {
       console.error(e);
+      handleError(e);
     }
   },
   null,

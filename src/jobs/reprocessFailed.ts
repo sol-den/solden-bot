@@ -3,6 +3,7 @@ import cfetch from "cross-fetch";
 
 import { API_ACCESS_KEY, API_URL } from "..";
 import { EVERY_DAY_AT_MIDNIGHT, JOB_TIME_ZONE } from "../constants";
+import { handleError } from "../utils/utils";
 
 export const reprocessJob = new CronJob(
   EVERY_DAY_AT_MIDNIGHT,
@@ -24,6 +25,7 @@ export const reprocessJob = new CronJob(
       console.log("Reprocessing failed upgrade transactions");
     } catch (e) {
       console.error(e);
+      handleError(e);
     }
   },
   null,

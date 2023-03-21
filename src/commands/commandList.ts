@@ -1,7 +1,7 @@
 import { Command } from "../types";
-import { testCommand } from "./test";
+import { snapshotLeaderboardCommand } from "./snapshotLeaderboard";
 
 /**
  * Add new commands here to register them
  */
-export const commands: Command[] = [testCommand];
+export const commands: Command[] = [snapshotLeaderboardCommand];
