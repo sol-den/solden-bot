@@ -1,13 +1,13 @@
 import { Client, Events, GatewayIntentBits, REST, Routes } from "discord.js";
 
 import { commands } from "./commands/commandList";
-import { BOT_LOG_CHANNEL } from "./constants";
 import { aggregateLeaderboardJob } from "./jobs/aggregateLeaderboard.ts";
 import { reprocessJob } from "./jobs/reprocessFailed";
 import { resetFightCooldownsJob } from "./jobs/resetFightCooldowns";
 import { resetLeaderboardJob } from "./jobs/resetLeaderboard";
 import { resetMaxesJob } from "./jobs/resetMaxes";
 import { resetUpgradeCooldownsJob } from "./jobs/resetUpgradeCooldowns";
+import { handleError } from "./utils/utils";
 
 require("dotenv").config();
 
@@ -52,10 +52,7 @@ bot.on("ready", () => {
 
 bot.on("error", async (error) => {
   console.error(error);
-  const logChannel = await bot.channels.fetch(BOT_LOG_CHANNEL);
-  if (!logChannel) {
-    console.log("Could not locate log channel!");
-  }
+  handleError(error);
 });
 
 // Register jobs and start them all
