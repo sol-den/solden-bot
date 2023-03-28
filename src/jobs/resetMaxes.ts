@@ -2,11 +2,11 @@ import { CronJob } from "cron";
 import cfetch from "cross-fetch";
 
 import { API_ACCESS_KEY, API_URL } from "..";
-import { EVERY_DAY_AT_MIDNIGHT, JOB_TIME_ZONE } from "../constants";
+import { EVERT_FRIDAY_AT_NOON, JOB_TIME_ZONE } from "../constants";
 import { handleError } from "../utils/utils";
 
 export const resetMaxesJob = new CronJob(
-  EVERY_DAY_AT_MIDNIGHT,
+  EVERT_FRIDAY_AT_NOON,
   async () => {
     try {
       const resetMaxReq = await cfetch(`${API_URL}/resetmax`, {
