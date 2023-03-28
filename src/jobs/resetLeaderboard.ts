@@ -3,11 +3,11 @@ import cfetch from "cross-fetch";
 import { APIEmbedField, EmbedBuilder, RestOrArray } from "discord.js";
 
 import { API_ACCESS_KEY, API_URL, TOP_10_CHANNEL } from "..";
-import { ADMIN_ROLE, EVERY_SATURDAY_AT_MIDNIGHT, JOB_TIME_ZONE, MOD_ROLE } from "../constants";
+import { ADMIN_ROLE, EVERT_FRIDAY_AT_NOON, JOB_TIME_ZONE, MOD_ROLE } from "../constants";
 import { getTextChannel, handleError } from "../utils/utils";
 
 export const resetLeaderboardJob = new CronJob(
-  EVERY_SATURDAY_AT_MIDNIGHT,
+  EVERT_FRIDAY_AT_NOON,
   async () => {
     try {
       const top10Fighters = await cfetch(`${API_URL}/gettopten`);

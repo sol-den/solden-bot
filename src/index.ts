@@ -63,7 +63,6 @@ aggregateLeaderboardJob.start();
 resetFightCooldownsJob.start();
 resetLeaderboardJob.start();
 resetUpgradeCooldownsJob.start();
-// testJob.start();
 
 console.log("Current time: ", new Date().toString());
 console.log("Reprocess job run time: ", reprocessJob.nextDates().toString());
@@ -72,7 +71,6 @@ console.log("Aggregate leaderboard job run time: ", aggregateLeaderboardJob.next
 console.log("Reset fight cooldowns job run time: ", resetFightCooldownsJob.nextDates().toString());
 console.log("Reset leaderboard job run time: ", resetLeaderboardJob.nextDates().toString());
 console.log("Reset upgrade cooldowns job run time: ", resetUpgradeCooldownsJob.nextDates().toString());
-// console.log("Test job run time: ", testJob.nextDates().toString());
 //#endregion
 
 bot.login(DISCORD_TOKEN);
