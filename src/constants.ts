@@ -1,5 +1,5 @@
 // Channels
-export const BOT_LOG_CHANNEL = "982060324603695104";
+// None for now
 
 // Users
 export const QUELLEN_ID = "416430897894522890";

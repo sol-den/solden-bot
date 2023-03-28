@@ -1,5 +1,5 @@
-import { bot } from "..";
-import { BOT_LOG_CHANNEL, LOG_ERRORS } from "../constants";
+import { bot, BOT_LOG_CHANNEL } from "..";
+import { LOG_ERRORS } from "../constants";
 
 export function getTextChannel(id: string) {
   const channel = bot.channels.cache.get(id);
