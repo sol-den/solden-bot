@@ -17,6 +17,7 @@ const CLIENT_ID = process.env.CLIENT_ID!;
 export const API_URL = process.env.API_URL!;
 export const API_ACCESS_KEY = process.env.API_ACCESS_KEY!;
 export const TOP_10_CHANNEL = process.env.TOP_10_CHANNEL!;
+export const BOT_LOG_CHANNEL = process.env.BOT_LOG_CHANNEL!;
 
 export const bot = new Client({ intents: [GatewayIntentBits.Guilds] });
 
