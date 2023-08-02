@@ -20,21 +20,24 @@ export const resetLeaderboardJob = new CronJob(
       const embed = new EmbedBuilder();
       embed.setTitle(`Top 10 Leaderboard for ${new Date().toLocaleDateString("UK")}`);
       embed.setColor(0xff7b00);
+
       const formattedTop10Wallets: RestOrArray<APIEmbedField> = top10Data.map((wallet, index) => ({
         name: `#${index + 1}`,
         value: wallet,
         inline: false,
       }));
       embed.setFields(...formattedTop10Wallets);
-      const leadeboardChannel = getTextChannel(TOP_10_CHANNEL);
-      if (leadeboardChannel) {
+
+      const leaderboardChannel = getTextChannel(TOP_10_CHANNEL);
+      if (leaderboardChannel) {
         try {
-          leadeboardChannel.send({
+          void leaderboardChannel.send({
             content: `<@&${ADMIN_ROLE}> <@&${MOD_ROLE}>`,
             embeds: [embed],
           });
-        } catch {
+        } catch (e) {
           console.log("Could not send leaderboard message");
+          handleError(e);
         }
         const resetLeaderboardReq = await cfetch(`${API_URL}/snapshotleaderboard`, {
           method: "POST",
@@ -53,7 +56,7 @@ export const resetLeaderboardJob = new CronJob(
       }
     } catch (e) {
       console.error(e);
-      handleError(e);
+      void handleError(e);
     }
   },
   null,

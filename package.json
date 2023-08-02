@@ -2,15 +2,15 @@
   "author": "",
   "description": "",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "main": "index.js",
   "name": "solden-bot",
   "scripts": {
     "prepare": "pnpm husky install",
     "build": "tsc",
     "start": "pnpm build && node dist/index.js",
-    "format": "prettier --write src/**/*.ts",
-    "lint": "eslint \"src/**/*.ts\" --fix",
+    "format": "prettier --write src/**/*.{ts,js}",
+    "lint": "eslint \"src/**/*.{ts,js}\" --fix",
     "lint-check": "eslint \"src/**/*.ts\"",
     "type-check": "tsc --noEmit"
   },
@@ -36,7 +36,8 @@
   },
   "lint-staged": {
     "*.{js,ts}": [
-      "pnpm format"
+      "pnpm format",
+      "pnpm lint"
     ]
   }
 }

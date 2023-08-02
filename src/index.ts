@@ -33,17 +33,22 @@ async function registerCommands() {
 registerCommands();
 
 bot.on(Events.InteractionCreate, async (interaction) => {
-  if (!interaction.isCommand()) return;
-  try {
-    const command = commands.find((cmd) => cmd.data.name === interaction.commandName);
-    if (!command) return;
-    await command.execute(interaction);
-  } catch (error) {
-    console.error(error);
-    await interaction.reply({
-      content: "There was an error while executing this command!",
-      ephemeral: true,
-    });
+  if (interaction.isCommand()) {
+    try {
+      const command = commands.find((cmd) => cmd.data.name === interaction.commandName);
+      if (!command) return;
+      await command.execute(interaction);
+    } catch (error) {
+      console.error(error);
+      await interaction.reply({
+        content: "There was an error while executing this command!",
+        ephemeral: true,
+      });
+    }
+  } else {
+    // Can add more event handlers here (make it an else if)
+    // Just return for now
+    return;
   }
 });
 
@@ -57,7 +62,7 @@ bot.on("error", async (error) => {
 });
 
 // Register jobs and start them all
-//#region
+// #region
 reprocessJob.start();
 resetMaxesJob.start();
 aggregateLeaderboardJob.start();
@@ -72,6 +77,6 @@ console.log("Aggregate leaderboard job run time: ", aggregateLeaderboardJob.next
 console.log("Reset fight cooldowns job run time: ", resetFightCooldownsJob.nextDates().toString());
 console.log("Reset leaderboard job run time: ", resetLeaderboardJob.nextDates().toString());
 console.log("Reset upgrade cooldowns job run time: ", resetUpgradeCooldownsJob.nextDates().toString());
-//#endregion
+// #endregion
 
 bot.login(DISCORD_TOKEN);
