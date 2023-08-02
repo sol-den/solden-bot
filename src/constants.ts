@@ -20,4 +20,4 @@ export const EVERY_MINUTE = "*/1 * * * *";
 export const EVERY_TWO_MINUTES = "*/2 * * * *";
 
 // Logging config
-export const LOG_ERRORS = true;
+export const LOG_ERRORS = false;
