@@ -24,7 +24,7 @@ export const aggregateLeaderboardJob = new CronJob(
       console.log("Aggregated leaderboard");
     } catch (e) {
       console.error(e);
-      handleError(e);
+      handleError(e).catch(console.error);
     }
   },
   null,

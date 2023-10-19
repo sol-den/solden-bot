@@ -1,1 +1,2 @@
-docker compose up
+docker network create solden-backend
+docker compose up $@

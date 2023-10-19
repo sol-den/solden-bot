@@ -37,7 +37,7 @@ export const resetLeaderboardJob = new CronJob(
           });
         } catch (e) {
           console.log("Could not send leaderboard message");
-          handleError(e);
+          handleError(e).catch(console.error);
         }
         const resetLeaderboardReq = await cfetch(`${API_URL}/snapshotleaderboard`, {
           method: "POST",
@@ -56,7 +56,7 @@ export const resetLeaderboardJob = new CronJob(
       }
     } catch (e) {
       console.error(e);
-      void handleError(e);
+      handleError(e).catch(console.error);
     }
   },
   null,
