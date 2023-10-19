@@ -24,7 +24,7 @@ jobs:
       - name: Lint Check
         run: pnpm lint-check
 
-      - name: Prettier Check
+      - name: Formatting Check
         run: pnpm format-check
 
   docker-build-check:
