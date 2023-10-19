@@ -12,13 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install pnpm
+        run: npm i -g pnpm@^7
+
       - uses: actions/setup-node@v2
         with:
           cache: "pnpm"
           node-version: 18
-
-      - name: Install pnpm
-        run: npm i -g pnpm@^7
 
       - name: Install Dependencies
         run: pnpm i
