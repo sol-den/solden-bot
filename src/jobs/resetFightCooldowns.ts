@@ -24,7 +24,7 @@ export const resetFightCooldownsJob = new CronJob(
       console.log("Cleared fight cooldowns");
     } catch (e) {
       console.error(e);
-      handleError(e);
+      handleError(e).catch(console.error);
     }
   },
   null,

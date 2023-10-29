@@ -25,7 +25,7 @@ export const reprocessJob = new CronJob(
       console.log("Reprocessing failed upgrade transactions");
     } catch (e) {
       console.error(e);
-      handleError(e);
+      handleError(e).catch(console.error);
     }
   },
   null,

@@ -25,7 +25,7 @@ export const resetMaxesJob = new CronJob(
       console.log("Reset maxes");
     } catch (e) {
       console.error(e);
-      handleError(e);
+      handleError(e).catch(console.error);
     }
   },
   null,

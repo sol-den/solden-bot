@@ -25,7 +25,7 @@ export const resetUpgradeCooldownsJob = new CronJob(
       console.log("Reset upgrade cooldowns");
     } catch (e) {
       console.error(e);
-      handleError(e);
+      handleError(e).catch(console.error);
     }
   },
   null,

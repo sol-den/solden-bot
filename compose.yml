@@ -1,3 +1,13 @@
 services:
   solden-bot:
     image: solden-bot
+    build: .
+    env_file:
+      - .env
+    networks:
+      - solden-backend
+
+networks:
+  solden-backend:
+    name: solden-backend
+    external: true

@@ -6,38 +6,39 @@
   "main": "index.js",
   "name": "solden-bot",
   "scripts": {
-    "prepare": "pnpm husky install",
+    "prepare": "husky install",
     "build": "tsc",
     "start": "pnpm build && node dist/index.js",
     "format": "prettier --write src/**/*.{ts,js}",
+    "format-check": "prettier --check src/**/*.{ts,js}",
     "lint": "eslint \"src/**/*.{ts,js}\" --fix",
-    "lint-check": "eslint \"src/**/*.ts\"",
+    "lint-check": "eslint \"src/**/*.{ts,js}\"",
     "type-check": "tsc --noEmit"
   },
   "version": "2.0.0",
   "dependencies": {
-    "cron": "^2.3.0",
-    "cross-fetch": "^3.1.5",
-    "discord.js": "^14.8.0",
-    "dotenv": "^16.0.3"
+    "cron": "^3.1.1",
+    "cross-fetch": "^4.0.0",
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
-    "@types/cron": "^2.0.0",
-    "@types/node": "^18.15.3",
-    "@typescript-eslint/eslint-plugin": "^5.56.0",
-    "@typescript-eslint/parser": "^5.56.0",
-    "eslint": "^8.36.0",
+    "@types/cron": "^2.4.0",
+    "@types/node": "^20.8.7",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "eslint": "^8.51.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.0",
-    "prettier": "^2.8.4",
-    "typescript": "^5.0.2"
+    "lint-staged": "^15.0.1",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
   },
   "lint-staged": {
-    "*.{js,ts}": [
-      "pnpm format",
-      "pnpm lint"
+    "**/*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
     ]
   }
 }

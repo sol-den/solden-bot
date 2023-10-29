@@ -5,12 +5,12 @@ import { handleError } from "../utils/utils";
 
 export const templateJob = new CronJob(
   EVERY_DAY_AT_MIDNIGHT,
-  async () => {
+  () => {
     try {
       // Do Stuff
     } catch (e) {
       console.error(e);
-      handleError(e);
+      handleError(e).catch(console.error);
     }
   },
   null,
