@@ -1,0 +1,26 @@
+name: AI PR Review
+
+on:
+  pull_request:
+  issue_comment:
+
+jobs:
+  pr-agent:
+    name: PR Agent
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    
+    steps:
+      - name: PR Agent Review
+        id: pragent
+        uses: Codium-ai/pr-agent@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          github_action.auto_review: true
+          github_action.auto_describe: false
+          github_action.auto_improve: false
+          github_action.auto_model: "gpt-4-0613"
