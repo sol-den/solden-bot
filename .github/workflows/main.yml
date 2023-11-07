@@ -1,0 +1,42 @@
+name: CI Checks
+
+on:
+  pull_request:
+    branches: ["master", "develop"]
+
+jobs:
+  main-check:
+    name: Code Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        run: npm i -g pnpm@^7
+
+      - uses: actions/setup-node@v2
+        with:
+          cache: "pnpm"
+          node-version: 18
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Type Check
+        run: pnpm type-check
+
+      - name: Lint Check
+        run: pnpm lint-check
+
+      - name: Formatting Check
+        run: pnpm format-check
+
+  docker-build-check:
+    name: Docker Build Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build
+        run: sh ./build.sh

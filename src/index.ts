@@ -1,3 +1,4 @@
+import { fetch as cfetch } from "cross-fetch";
 import { Client, Events, GatewayIntentBits, REST, Routes } from "discord.js";
 
 import { commands } from "./commands/commandList";
@@ -9,6 +10,7 @@ import { resetMaxesJob } from "./jobs/resetMaxes";
 import { resetUpgradeCooldownsJob } from "./jobs/resetUpgradeCooldowns";
 import { handleError } from "./utils/utils";
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 require("dotenv").config();
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN!;
@@ -30,7 +32,7 @@ async function registerCommands() {
   });
 }
 
-registerCommands();
+registerCommands().catch(console.error);
 
 bot.on(Events.InteractionCreate, async (interaction) => {
   if (interaction.isCommand()) {
@@ -58,7 +60,7 @@ bot.on("ready", () => {
 
 bot.on("error", async (error) => {
   console.error(error);
-  handleError(error);
+  await handleError(error);
 });
 
 // Register jobs and start them all
@@ -71,12 +73,16 @@ resetLeaderboardJob.start();
 resetUpgradeCooldownsJob.start();
 
 console.log("Current time: ", new Date().toString());
-console.log("Reprocess job run time: ", reprocessJob.nextDates().toString());
-console.log("Reset maxes job run time: ", resetMaxesJob.nextDates().toString());
-console.log("Aggregate leaderboard job run time: ", aggregateLeaderboardJob.nextDates().toString());
-console.log("Reset fight cooldowns job run time: ", resetFightCooldownsJob.nextDates().toString());
-console.log("Reset leaderboard job run time: ", resetLeaderboardJob.nextDates().toString());
-console.log("Reset upgrade cooldowns job run time: ", resetUpgradeCooldownsJob.nextDates().toString());
+console.log("Reprocess job run time: ", reprocessJob.nextDate().toString());
+console.log("Reset maxes job run time: ", resetMaxesJob.nextDate().toString());
+console.log("Aggregate leaderboard job run time: ", aggregateLeaderboardJob.nextDate().toString());
+console.log("Reset fight cooldowns job run time: ", resetFightCooldownsJob.nextDate().toString());
+console.log("Reset leaderboard job run time: ", resetLeaderboardJob.nextDate().toString());
+console.log("Reset upgrade cooldowns job run time: ", resetUpgradeCooldownsJob.nextDate().toString());
 // #endregion
 
-bot.login(DISCORD_TOKEN);
+cfetch(`${API_URL}/ping`)
+  .then(() => console.log("Pinged API!"))
+  .catch(console.error);
+
+bot.login(DISCORD_TOKEN).catch(console.error);
