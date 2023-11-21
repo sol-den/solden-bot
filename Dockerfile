@@ -1,8 +1,8 @@
-FROM node:18-alpine
+FROM node:20-alpine
 WORKDIR /app
 COPY . .
 
-RUN npm i -g pnpm@^7
+RUN npm i -g pnpm@^8
 RUN pnpm i
 RUN pnpm build
 
